@@ -72,3 +72,8 @@ These third party tools are complemented by Shopify specific tools to ease app d
 
 There are some things missing (Cover all APIs, improve documentation...), feel free to add this if you want! If you want
 some guidelines feel free to contact me :)
+
+## 📝 Acknowledgements
+- [CodelyTV](https://codely.com/) for the DDD and Hexagonal Architecture inspiration and Symfony DDD skeleton
+- Shopify for the PHP template and the Shopify API package
+- [Interactiv4](https://interactiv4.com) for give me the chance to work with Shopify and learn
