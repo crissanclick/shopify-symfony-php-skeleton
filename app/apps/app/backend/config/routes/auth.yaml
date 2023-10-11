@@ -1,0 +1,11 @@
+auth_get:
+  path: /api/auth
+  controller: Crissanclick\Apps\App\Backend\Controller\Setup\AuthGetController
+  defaults: { check_installation: false }
+  methods:  [GET]
+
+auth_callback_get:
+  path: /api/auth/callback
+  controller: Crissanclick\Apps\App\Backend\Controller\Setup\AuthCallbackGetController
+  defaults: { check_installation: false }
+  methods:  [GET]

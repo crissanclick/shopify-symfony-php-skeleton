@@ -1,0 +1,98 @@
+imports:
+  - { resource: ../../../../src/App/Shared/Infrastructure/Symfony/DependencyInjection/app_services.yaml }
+
+services:
+  _defaults:
+    autoconfigure: true
+    autowire: true
+
+  # Configure
+  _instanceof:
+    Crissanclick\Shared\Domain\Bus\Event\DomainEventSubscriber:
+      tags: ['crissanclick.domain_event_subscriber']
+
+    Crissanclick\Shared\Domain\Bus\Command\CommandHandler:
+      tags: ['crissanclick.command_handler']
+
+    Crissanclick\Shared\Domain\Bus\Query\QueryHandler:
+      tags: ['crissanclick.query_handler']
+
+    Crissanclick\App\Auth\Domain\Subscription\Billing:
+      tags: ['crissanclick.billing_type']
+
+  Crissanclick\Apps\App\Backend\Controller\:
+    resource: '../src/Controller'
+    tags: ['controller.service_arguments']
+
+  Crissanclick\Apps\App\Backend\Command\:
+    resource: '../src/Command'
+    tags: ['console.command']
+
+  # Wire
+  Crissanclick\Shared\:
+    resource: '../../../../src/Shared'
+
+  Crissanclick\App\:
+    resource: '../../../../src/App'
+
+  # -- TAGGING --
+  Crissanclick\Shared\Infrastructure\Bus\Event\InMemory\InMemorySymfonyEventBus:
+    arguments: [!tagged crissanclick.domain_event_subscriber]
+    lazy: true
+
+  Crissanclick\Shared\Infrastructure\Bus\Event\DomainEventMapping:
+    arguments: [!tagged crissanclick.domain_event_subscriber]
+
+  Crissanclick\Shared\Infrastructure\Bus\Event\DomainEventSubscriberLocator:
+    arguments: [!tagged crissanclick.domain_event_subscriber]
+
+  Crissanclick\Shared\Infrastructure\Doctrine\DatabaseConnections:
+    arguments: [!tagged crissanclick.database_connection]
+
+  Crissanclick\Shared\Infrastructure\Symfony\AddJsonBodyToRequestListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  Crissanclick\Shared\Infrastructure\Symfony\ApiExceptionListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: onException }
+
+  Crissanclick\App\Shared\Infrastructure\Shopify\Bootstrap:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  Crissanclick\App\Auth\Infrastructure\Symfony\EnsureAppInstalled:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  Crissanclick\App\Auth\Infrastructure\Symfony\EnsureShopifySession:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  Crissanclick\App\Auth\Infrastructure\Symfony\AddShopifyHeaders:
+    tags:
+      - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+
+  Crissanclick\App\Shared\Infrastructure\Symfony\FallbackRoute:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+
+  # -- APP DEFINITIONS --
+  # Command/Query Handlers
+  Crissanclick\Shared\Infrastructure\Bus\Command\InMemorySymfonyCommandBus:
+    arguments: [!tagged crissanclick.command_handler]
+
+  Crissanclick\Shared\Infrastructure\Bus\Query\InMemorySymfonyQueryBus:
+    arguments: [!tagged crissanclick.query_handler]
+
+  Crissanclick\App\Auth\Infrastructure\EnsureBilling:
+    arguments: [!tagged crissanclick.billing_type]
+
+  # Implementations
+  Crissanclick\Shared\Domain\Bus\Event\EventBus: '@Crissanclick\Shared\Infrastructure\Bus\Event\InMemory\InMemorySymfonyEventBus'
+
+twig:
+  default_path: '%kernel.project_dir%/../frontend/templates'
+  strict_variables: true
+  globals:
+    flash: '@Crissanclick\Shared\Infrastructure\Symfony\FlashSession'

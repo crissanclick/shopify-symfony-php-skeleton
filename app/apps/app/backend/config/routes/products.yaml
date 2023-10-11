@@ -1,0 +1,5 @@
+products_count_get:
+  path: /api/products/count
+  controller: Crissanclick\Apps\App\Backend\Controller\Product\ProductCountGetController
+  defaults: { check_installation: true, auth: true }
+  methods:  [GET]

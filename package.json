@@ -1,0 +1,23 @@
+{
+  "name": "shopify-app-name",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "shopify app dev",
+    "push": "shopify app push",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy",
+    "info": "shopify app info"
+  },
+  "dependencies": {
+    "@shopify/app": "3.49.5",
+    "@shopify/cli": "3.49.5"
+  },
+  "author": "crissanclick",
+  "private": true,
+  "workspaces": [
+    "extensions/*"
+  ]
+}

@@ -1,0 +1,4 @@
+roles = ["backend"]
+
+[commands]
+dev = "symfony serve --dir=./public --port=8030 -d --no-tls"

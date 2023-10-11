@@ -1,0 +1,5 @@
+health-check_get:
+    path: /api/health-check
+    controller: Crissanclick\Apps\App\Backend\Controller\HealthCheck\HealthCheckGetController
+    defaults: { check_installation: true }
+    methods:  [GET]

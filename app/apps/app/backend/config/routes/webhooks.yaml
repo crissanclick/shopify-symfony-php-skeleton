@@ -1,0 +1,5 @@
+webhooks_post:
+  path: /api/webhooks
+  controller: Crissanclick\Apps\App\Backend\Controller\Webhooks\ResolvePostController
+  defaults: { check_installation: false }
+  methods:  [POST]

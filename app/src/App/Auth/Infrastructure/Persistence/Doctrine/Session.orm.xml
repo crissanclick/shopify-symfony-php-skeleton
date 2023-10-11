@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Crissanclick\App\Auth\Domain\Session" table="sessions">
+        <id name="sessionId" type="string" column="session_id" length="36" />
+        <embedded name="shop" class="Crissanclick\App\Shared\Domain\ShopId" use-column-prefix="false" />
+        <field name="isOnline" column="is_online" type="boolean" />
+        <field name="state" />
+        <field name="createdAt" column="created_at" type="datetime" />
+        <field name="updatedAt" column="updated_at" type="datetime" />
+        <field name="scope" />
+        <embedded name="accessToken" class="Crissanclick\App\Shared\Domain\AccessToken" use-column-prefix="false" />
+        <field name="expiresAt" column="expires_at" type="datetime" />
+        <field name="userId" column="user_id" type="integer" unique="true" />
+        <field name="userFirstName" column="user_first_name" />
+        <field name="userLastName" column="user_last_name" />
+        <field name="userEmail" column="user_email" />
+        <field name="userEmailVerified" column="user_email_verified" type="integer" />
+        <field name="accountOwner" column="account_owner" type="integer" />
+        <field name="locale" />
+        <field name="collaborator" type="integer" />
+    </entity>
+
+</doctrine-mapping>

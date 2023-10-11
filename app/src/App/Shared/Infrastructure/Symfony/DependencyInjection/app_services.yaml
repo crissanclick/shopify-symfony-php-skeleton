@@ -1,0 +1,16 @@
+services:
+
+  # Databases
+  Doctrine\ORM\EntityManager:
+    factory: [ Crissanclick\App\Shared\Infrastructure\Doctrine\AppEntityManagerFactory, create ]
+    arguments:
+      - driver: '%env(APP_DATABASE_DRIVER)%'
+        host: '%env(APP_DATABASE_HOST)%'
+        port: '%env(APP_DATABASE_PORT)%'
+        dbname: '%env(APP_DATABASE_NAME)%'
+        user: '%env(APP_DATABASE_USER)%'
+        password: '%env(APP_DATABASE_PASSWORD)%'
+      - '%env(APP_ENV)%'
+    tags:
+      - { name: app.database_connection }
+    public: true

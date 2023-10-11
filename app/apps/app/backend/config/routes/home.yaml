@@ -1,0 +1,5 @@
+home_get:
+  path: /
+  controller: Crissanclick\Apps\App\Backend\Controller\Home\HomeGetController
+  defaults: { check_installation: true }
+  methods:  [GET]
