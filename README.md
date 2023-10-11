@@ -1,4 +1,4 @@
-<h1 align="center">Shopify APP Template in Symfony PHP 🐘</h1>
+<h1 align="center">(WIP) Shopify APP Template in Symfony PHP 🐘</h1>
 
 Authors: [crissanclick](https://github.com/crissanclick) , [Interactiv4](https://interactiv4.com)
 
