@@ -71,7 +71,7 @@ These third party tools are complemented by Shopify specific tools to ease app d
 
 ## 🤔 Contributing
 
-There are some things missing (Cover all APIs, improve documentation...), feel free to add this if you want! If you want
+There are some things missing (Cover all APIs, Uninstall APP, improve documentation...), feel free to add this if you want! If you want
 some guidelines feel free to contact me :)
 
 ## 📝 Acknowledgements
