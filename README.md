@@ -67,7 +67,8 @@ These third party tools are complemented by Shopify specific tools to ease app d
 5. Go to `apps/app/frontend` folder and run `yarn install or npm install` to install all frontend the dependencies.
 6. Then, execute a `cp .env.example .env` and fill the `.env` file with your Shopify APP credentials and decide if you want to charge something to use the APP, defining the interval and the required data.
 7. Once you have all defined, you can run `yarn dev or npm run dev` to start the development server. (It will automatically raise the backend server and will map a real cloudflare domain against your localhost using the 8030 port)
-8. Congratulations! You already should have the APP working :)
+8. It is important before click on button `Install app` inside the Shopify panel to update your .env file with the API_KEY_CLIENT and API_KEY_SECRET.
+9. Congratulations! You already should have the APP working :)
 
 ## 🤔 Contributing
 
