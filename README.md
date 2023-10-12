@@ -61,12 +61,13 @@ These third party tools are complemented by Shopify specific tools to ease app d
 ### 🏗️ Creating my first app
 
 1. Clone this repository.
-2. Go to `app` folder and run `composer install` to install all backend the dependencies.
-3. Then take the `etc/databases/skeleton-app.sql` and import it in your MySQL server
-4. Go to `apps/app/frontend` folder and run `yarn install or npm install` to install all frontend the dependencies.
-5. Then, execute a `cp .env.example .env` and fill the `.env` file with your Shopify APP credentials and decide if you want to charge something to use the APP, defining the interval and the required data.
-6. Once you have all defined, you can run `yarn dev or npm run dev` to start the development server. (It will automatically raise the backend server and will map a real cloudflare domain against your localhost using the 8030 port)
-7. Congratulations! You already should have the APP working :)
+2. In root folder run `yarn install`
+3. Go to `app` folder and run `composer install` to install all backend the dependencies.
+4. Then take the `etc/databases/skeleton-app.sql` and import it in your MySQL server
+5. Go to `apps/app/frontend` folder and run `yarn install or npm install` to install all frontend the dependencies.
+6. Then, execute a `cp .env.example .env` and fill the `.env` file with your Shopify APP credentials and decide if you want to charge something to use the APP, defining the interval and the required data.
+7. Once you have all defined, you can run `yarn dev or npm run dev` to start the development server. (It will automatically raise the backend server and will map a real cloudflare domain against your localhost using the 8030 port)
+8. Congratulations! You already should have the APP working :)
 
 ## 🤔 Contributing
 
