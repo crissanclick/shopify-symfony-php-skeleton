@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Crissanclick\App\Shared\Infrastructure\Shopify;
+namespace Crissanclick\App\Auth\Infrastructure\Shopify;
 
 use Crissanclick\App\Auth\Infrastructure\Shopify\Session\DbStorage;
 use Crissanclick\App\Auth\Infrastructure\Shopify\Webhook\Handler\Uninstall;

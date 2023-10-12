@@ -57,7 +57,7 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.exception, method: onException }
 
-  Crissanclick\App\Shared\Infrastructure\Shopify\Bootstrap:
+  Crissanclick\App\Auth\Infrastructure\Shopify\Bootstrap:
     tags:
       - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 
@@ -72,10 +72,6 @@ services:
   Crissanclick\App\Auth\Infrastructure\Symfony\AddShopifyHeaders:
     tags:
       - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
-
-  Crissanclick\App\Shared\Infrastructure\Symfony\FallbackRoute:
-    tags:
-      - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
 
   # -- APP DEFINITIONS --
   # Command/Query Handlers
