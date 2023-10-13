@@ -67,14 +67,30 @@ These third party tools are complemented by Shopify specific tools to ease app d
 5. Go to `apps/app/frontend` folder and run `yarn install or npm install` to install all frontend the dependencies.
 6. Then, execute a `cp .env.example .env` and fill the `.env` file with your Shopify APP credentials and decide if you want to charge something to use the APP, defining the interval and the required data.
 7. Once you have all defined, you can run `yarn dev or npm run dev` to start the development server. (It will automatically raise the backend server and will map a real cloudflare domain against your localhost using the 8030 port)
-8. Congratulations! You already should have the APP working :)
+8. It is important before click on button `Install app` inside the Shopify panel to update your .env file with the API_KEY_CLIENT and API_KEY_SECRET.
+9. Congratulations! You already should have the APP working :)
 
 ## 🤔 Contributing
 
-There are some things missing (Cover all APIs, improve documentation...), feel free to add this if you want! If you want
+There are some things missing (Cover all APIs, Uninstall APP, improve documentation...), feel free to add this if you want! If you want
 some guidelines feel free to contact me :)
 
 ## 📝 Acknowledgements
 - [CodelyTV](https://codely.com/) for the DDD and Hexagonal Architecture inspiration and Symfony DDD skeleton
 - Shopify for the PHP template and the Shopify API package
 - [Interactiv4](https://interactiv4.com) for give me the chance to work with Shopify and learn
+
+## ⭐Extra
+
+### How to configure a billing
+
+1. Go to `.env` file
+2. Add the following example:
+```
+APP_BILLING_REQUIRED=true
+APP_BILLING_CHARGE_NAME="My app name"
+APP_BILLING_AMOUNT=9.99
+APP_BILLING_CURRENCY=EUR
+APP_BILLING_INTERVAL=month or anual
+APP_BILLING_TYPE=EVERY_30_DAYS or ONE_TIME
+```
