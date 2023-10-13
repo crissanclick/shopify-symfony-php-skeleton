@@ -27,6 +27,11 @@ class MySqlSessionRepository extends DoctrineRepository implements SessionReposi
         return $this->repository(Session::class)->findOneBy(['id' => $id]);
     }
 
+    public function getByShop(string $shopId): ?Session
+    {
+        return $this->repository(Session::class)->findOneBy(['shop.value' => $shopId]);
+    }
+
     /**
      * @throws ShopIsNotRegistered
      */
@@ -45,7 +50,6 @@ class MySqlSessionRepository extends DoctrineRepository implements SessionReposi
 
     public function delete(string $shop): void
     {
-        //TODO: Implement delete
-        return;
+        $this->remove($this->getByShop($shop));
     }
 }
