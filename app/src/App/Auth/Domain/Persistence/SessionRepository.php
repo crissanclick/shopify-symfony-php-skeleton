@@ -15,6 +15,8 @@ interface SessionRepository
 
     public function get(int $id): ?Session;
 
+    public function getByShop(string $shopId): ?Session;
+
     /**
      * @param string $shop
      * @return bool
