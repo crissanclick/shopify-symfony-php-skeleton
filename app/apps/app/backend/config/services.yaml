@@ -20,6 +20,9 @@ services:
     Crissanclick\App\Auth\Domain\Subscription\Billing:
       tags: ['crissanclick.billing_type']
 
+    Crissanclick\App\Shared\Domain\Webhook:
+      tags: [ 'crissanclick.webhook' ]
+
   Crissanclick\Apps\App\Backend\Controller\:
     resource: '../src/Controller'
     tags: ['controller.service_arguments']
@@ -73,6 +76,10 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
 
+  Crissanclick\App\Shared\Infrastructure\Symfony\WebhookRegistration:
+    tags:
+      - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+
   # -- APP DEFINITIONS --
   # Command/Query Handlers
   Crissanclick\Shared\Infrastructure\Bus\Command\InMemorySymfonyCommandBus:
@@ -83,6 +90,12 @@ services:
 
   Crissanclick\App\Auth\Infrastructure\EnsureBilling:
     arguments: [!tagged crissanclick.billing_type]
+
+  Crissanclick\App\Shared\Application\Webhook\Create\WebhookPoolRegistration:
+    arguments: [ !tagged crissanclick.webhook ]
+
+  Crissanclick\App\Shared\Application\Webhook\Create\WebhookPoolHandlers:
+    arguments: [ !tagged crissanclick.webhook ]
 
   # Implementations
   Crissanclick\Shared\Domain\Bus\Event\EventBus: '@Crissanclick\Shared\Infrastructure\Bus\Event\InMemory\InMemorySymfonyEventBus'
