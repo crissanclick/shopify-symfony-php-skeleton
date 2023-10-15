@@ -94,3 +94,29 @@ APP_BILLING_CURRENCY=EUR
 APP_BILLING_INTERVAL=month or anual
 APP_BILLING_TYPE=EVERY_30_DAYS or ONE_TIME
 ```
+
+### How to register new webhooks
+
+1. Create a new Handler class (Example. `Crissanclick\App\Auth\Infrastructure\Shopify\Webhook\Handler\Uninstall`)
+2. Create a new Webhook class (Example. `Crissanclick\App\Auth\Infrastructure\Shopify\Webhook\Uninstall`)
+3. Provide the webhook information in the Webhook class like:
+```
+class Uninstall implements Webhook
+{
+    public function __construct(private readonly UninstallHandler $handler)
+    {
+    }
+
+    public function type(): string
+    {
+        return 'APP_UNINSTALLED';
+    }
+
+    public function handler(): WebhookHandler
+    {
+        return $this->handler;
+    }
+}
+```
+
++info: https://shopify.dev/docs/admin-api/rest/reference/events/webhook
