@@ -67,6 +67,7 @@ class DbStorage implements SessionStorage
         }
 
         $currentSession = DomainSession::create(
+            0,
             $session->getId(),
             $session->getShop(),
             $session->isOnline(),
