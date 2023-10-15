@@ -12,6 +12,7 @@ use DateTime;
 class Session extends AggregateRoot
 {
     private function __construct(
+        public int $id,
         public readonly string $sessionId,
         public readonly ShopId $shop,
         public readonly bool $isOnline,
@@ -33,6 +34,7 @@ class Session extends AggregateRoot
     }
 
     public static function create(
+        int $id,
         string $sessionId,
         string $shop,
         bool $isOnline,
@@ -52,6 +54,7 @@ class Session extends AggregateRoot
         bool $collaborator
     ): self {
         $session = new self(
+            $id,
             $sessionId,
             new ShopId($shop),
             $isOnline,

@@ -1,5 +1,6 @@
 
 CREATE TABLE `sessions` (
+    `id` bigint NOT NULL AUTO_INCREMENT,
     `session_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     `shop` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     `is_online` tinyint(1) NOT NULL,
@@ -17,5 +18,5 @@ CREATE TABLE `sessions` (
     `account_owner` tinyint(1) DEFAULT NULL,
     `locale` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
     `collaborator` tinyint(1) DEFAULT NULL,
-    PRIMARY KEY (`session_id`)
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

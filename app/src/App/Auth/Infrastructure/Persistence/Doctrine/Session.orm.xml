@@ -5,7 +5,10 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Crissanclick\App\Auth\Domain\Session" table="sessions">
-        <id name="sessionId" type="string" column="session_id" length="36" />
+        <id name="id" type="integer" column="id" length="36">
+            <generator />
+        </id>
+        <field name="sessionId" column="session_id" length="36" />
         <embedded name="shop" class="Crissanclick\App\Shared\Domain\ShopId" use-column-prefix="false" />
         <field name="isOnline" column="is_online" type="boolean" />
         <field name="state" />
